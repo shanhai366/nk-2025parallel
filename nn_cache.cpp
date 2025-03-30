@@ -7,32 +7,30 @@ using namespace std;
 using namespace chrono;
 
 const int n = 5000;
-vector<vector<float>> matrix(n, vector<float>(n, 1.0)); // ¶şÎ¬ÏòÁ¿
-vector<float> given_vector(n, 1.0); // Ò»Î¬ÏòÁ¿
-vector<float> res(n, 0.0); // Ò»Î¬ÏòÁ¿
+vector<vector<float>> matrix(n, vector<float>(n, 1.0)); // äºŒç»´å‘é‡
+vector<float> given_vector(n, 1.0); // ä¸€ç»´å‘é‡
+vector<float> res(n, 0.0); // ä¸€ç»´å‘é‡
 
 void optimized_method() {
-    for (int i = 0; i < n; i++) { // Í¨¹ı°´ĞĞ±éÀú¾ØÕóÀ´ÓÅ»¯»º´æ·ÃÎÊÄ£Ê½
+    for (int i = 0; i < n; i++) { // é€šè¿‡æŒ‰è¡Œéå†çŸ©é˜µæ¥ä¼˜åŒ–ç¼“å­˜è®¿é—®æ¨¡å¼
         for (int j = 0; j < n; j++) {
-            res[j] += matrix[i][j] * given_vector[i]; // Ö´ĞĞÄÚ»ı¼ÆËã
+            res[j] += matrix[i][j] * given_vector[i]; // æ‰§è¡Œå†…ç§¯è®¡ç®—
         }
     }
 }
 
 int main() {
-    // ²âÊÔ¾ØÕóÓëÏòÁ¿ÄÚ»ıµÄËã·¨
-    auto start = high_resolution_clock::now();  // ¼ÇÂ¼¿ªÊ¼Ê±¼ä
-    optimized_method(); // µ÷ÓÃÓÅ»¯Ëã·¨¼ÆËãÄÚ»ı
-    auto end = high_resolution_clock::now();  // ¼ÇÂ¼½áÊøÊ±¼ä
+    // æµ‹è¯•çŸ©é˜µä¸å‘é‡å†…ç§¯çš„ç®—æ³•
+    auto start = high_resolution_clock::now();  // è®°å½•å¼€å§‹æ—¶é—´
+    optimized_method(); // è°ƒç”¨ä¼˜åŒ–ç®—æ³•è®¡ç®—å†…ç§¯
+    auto end = high_resolution_clock::now();  // è®°å½•ç»“æŸæ—¶é—´
 
 
-    // Reset result vector
-    fill(res.begin(), res.end(), 0.0);
-
+    
 
 
 
-    cout << "cacheÓÅ»¯Ëã·¨: " << duration_cast<milliseconds>(end - start).count() << " ms\n"; // Êä³öÊ±¼ä
+    cout << "cacheä¼˜åŒ–ç®—æ³•: " << duration_cast<milliseconds>(end - start).count() << " ms\n"; // è¾“å‡ºæ—¶é—´
 
     return 0;
 }
